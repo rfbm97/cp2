@@ -1,0 +1,6 @@
+---
+  - name: Instalar Podman
+    apt:
+      name: podman
+      state: present
+      force_apt_get: yes

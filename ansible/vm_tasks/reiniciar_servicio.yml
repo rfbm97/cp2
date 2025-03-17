@@ -1,0 +1,5 @@
+---
+- name: Reiniciar el servicio de Podman
+  ansible.builtin.service:
+    name: podman
+    state: restarted

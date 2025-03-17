@@ -1,0 +1,22 @@
+---
+- name: Instalar Podman
+  hosts: mv_azure
+  gather_facts: yes
+  become: true
+  tasks:
+  - include_tasks: vm_tasks/actualizar_repositorios.yml
+  - include_tasks: vm_tasks/instalar_podman.yml
+
+- name: Instalar dependencias de ACR
+  hosts: mv_azure
+  gather_facts: yes
+  become: true
+  tasks:
+    - include_tasks: acr_tasks/acr_install_dependencies.yml
+
+- name: Instalar modulos python de ACR
+  hosts: mv_azure
+  gather_facts: yes
+  become: no
+  tasks:
+    - include_tasks: acr_tasks/acr_modulos_python.yml  

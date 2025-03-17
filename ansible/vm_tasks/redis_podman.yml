@@ -1,0 +1,16 @@
+---
+
+  - name: Pull de la imagen de redis desde el ACR
+    containers.podman.podman_image:
+      name: "{{ acr_name }}/redis:latest"
+      state: present
+
+  - name: Crear (run) un contenedor para redis con volumen genérico
+    containers.podman.podman_container:
+      name: redis
+      image: docker.io/library/redis:latest
+      state: started
+      volumes:
+        - redis_data:/data
+      ports:
+      - "6379:6379" 

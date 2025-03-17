@@ -1,0 +1,16 @@
+---
+  - name: Pull de la imagen de nginx desde el ACR
+    containers.podman.podman_image:
+      name: "{{acr_name}}/nginx:latest"
+      state: present
+
+  - name: Crear (run) un contenedor para nginx con volumen genérico
+    containers.podman.podman_container:
+      name: nginx
+      image: docker.io/library/nginx:latest
+      state: started
+      volumes:
+        - nginx_data:/usr/share/nginx/html
+      ports:
+        - "8080:80" 
+

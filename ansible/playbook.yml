@@ -1,0 +1,29 @@
+---
+- name: Setup ACR and images
+  hosts: localhost
+  become: true
+  tasks:
+    - include_tasks: acr_tasks/acr_login.yml
+    - include_tasks: acr_tasks/pull-images.yml
+    - include_tasks: acr_tasks/tag-images.yml
+  vars_files:
+    - vars.yml
+
+- name: Setup Webserver
+  hosts: vm
+  become: true
+  tasks:
+  - include_tasks: vm_tasks/actualizar_repositorios.yml
+  - include_tasks: vm_tasks/instalar_podman.yml
+  - include_tasks: vm_tasks/nginx_podman.yml
+  - include_tasks: vm_tasks/redis_podman.yml
+  - include_tasks: vm_tasks/reiniciar_servicio.yml
+  vars_files:
+    - vars.yml
+
+- name: Setup AKS
+  hosts: localhost
+  tasks:
+    - include_tasks: aks_tasks/creacion_namespace.yml
+    - include_tasks: aks_tasks/deploy_application.yml
+
