@@ -1,0 +1,8 @@
+---
+- name: Creacion del namespace
+  kubernetes.core.k8s:
+    kubeconfig: "/home/rafael/.kube/config"
+    name: unir
+    api_version: v1
+    kind: Namespace
+    state: present

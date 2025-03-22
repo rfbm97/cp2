@@ -1,0 +1,28 @@
+---
+  - name: Aplicar deployment del backend
+    kubernetes.core.k8s:
+      kubeconfig: "/home/rafael/.kube/config"
+      state: present
+      src: backend_deployment.yml
+      namespace: unir
+
+  - name: Aplicar service del backend
+    kubernetes.core.k8s:
+      kubeconfig: "/home/rafael/.kube/config"
+      state: present
+      src: backend_service.yml
+      namespace: unir
+
+  - name: Aplicar deployment del frontend
+    kubernetes.core.k8s:
+      kubeconfig: "/home/rafael/.kube/config"
+      state: present
+      src: frontend_deployment.yml
+      namespace: unir
+
+  - name: Aplicar servicio del frontend
+    kubernetes.core.k8s:
+      kubeconfig: "/home/rafael/.kube/config"
+      state: present
+      src: frontend_service.yml
+      namespace: unir

@@ -1,0 +1,14 @@
+---  
+- name: Subir (push) la imagen de nginx al ACR
+  containers.podman.podman_image:
+    name: nginx:latest
+    push: true
+    push_args:
+      dest: "{{acr_name}}/nginx:latest"
+
+- name: Subir (push) la imagen de redis al ACR
+  containers.podman.podman_image:
+    name: redis:latest
+    push: true
+    push_args:
+      dest: "{{acr_name}}/redis:latest"

@@ -1,0 +1,16 @@
+---  
+  - name: Etiquetar y subir (push) la imagen de nginx
+    containers.podman.podman_image:
+      name: docker.io/library/nginx:latest
+      tag: nginx:latest
+      push: true
+      push_args:
+        dest: "{{acr_name}}/nginx:latest"
+
+  - name: Etiquetar y subir (push) la imagen de redis
+    containers.podman.podman_image:
+      name: docker.io/library/redis:latest
+      tag: redis:latest
+      push: true
+      push_args:
+        dest: "{{acr_name}}/redis:latest"

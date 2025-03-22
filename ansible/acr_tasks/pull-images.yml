@@ -1,0 +1,10 @@
+---  
+  - name: Descargar (pull) la imagen de nginx
+    containers.podman.podman_image:
+      name: docker.io/library/nginx:latest
+      state: present
+
+  - name: Descargar (pull) la imagen de redis
+    containers.podman.podman_image:
+      name: docker.io/library/redis:latest
+      state: present

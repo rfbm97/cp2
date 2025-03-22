@@ -26,4 +26,6 @@
   tasks:
     - include_tasks: aks_tasks/creacion_namespace.yml
     - include_tasks: aks_tasks/deploy_application.yml
+  vars_files:
+    -vars.yml
 

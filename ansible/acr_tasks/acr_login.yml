@@ -1,0 +1,6 @@
+---
+- name: Login con el ACR
+  containers.podman.podman_login:
+    registry: "{{acr_name}}"
+    username: "{{acr_username}}"
+    password: "{{acr_password}}"
